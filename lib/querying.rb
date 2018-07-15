@@ -6,7 +6,7 @@ end
 
 def select_name_and_motto_of_char_with_longest_motto
   "SELECT characters.name, characters.motto FROM characters
-   ORDER BY characters.motto LIMIT 1;"
+   ORDER BY LENGTH(characters.motto) LIMIT 1;"
 end
 
 
@@ -35,5 +35,7 @@ def select_series_title_with_most_human_characters
 end
 
 def select_character_names_and_number_of_books_they_are_in
-  "SELECT characters.name, COUNT()"
+  "SELECT characters.name, COUNT(books.title) FROM characters
+   JOIN series ON characters.series_id = series.id
+   JOIN books ON serie.id = books.series_id;"
 end
