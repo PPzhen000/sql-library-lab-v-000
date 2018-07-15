@@ -26,11 +26,11 @@ def select_name_and_series_subgenres_of_authors
 end
 
 def select_series_title_with_most_human_characters
-  "SELECT series.title as most_human_characters FROM series
+  "SELECT series.title, count(characters.species) as most_human_characters FROM series
    JOIN characters ON series.id = characters.series_id
    WHERE characters.species = 'human'
    group by series_id
-   ORDER BY COUNT(most_human_characters) DESC
+   ORDER BY most_human_characters DESC
    LIMIT 1;"
 end
 
